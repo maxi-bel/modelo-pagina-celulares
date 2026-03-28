@@ -1,832 +1,756 @@
-
-body, div, ul,a,h1,h2,h3,h4{
-    margin: 0;
-    padding: 0;
-
-    font-family:  sans-serif;
-}
-
-label, .sidebar-nav{
-    user-select: none;
-}
-body{
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    --bg-color: rgb(57, 39, 134);
-    --sidebar-color: #fff;
-    --dark-color:rgb(57, 39, 134);
-    --text-color:#444;
-    --radial: radial-gradient(circle, #fff, rgb(57, 39, 134));
-    background: radial-gradient(rgb(57, 39, 134), #fff);
-    --card--color:#fff;
-    --card--bg-color:#fff9;
-    --primary: #9d00ff;
-    --secondary:#00e5ff;
-    --accent: #ff00e5;
-    --card-bg: rgba(20, 20, 40, 0.7);
-    --text-primary: #ffffff;
-    --text-secondary: #b8b8ff;
-    --glow-primary: 0 0 10px rgba(157, 0, 255, 0.7), 0 0 20px rgba(157, 0, 255, 0.5);
-    --glow-secondary: 0 0 10px rgba(0, 229, 255, 0.7), 0 0 20px rgba(0, 229, 255, 0.5);
-    --glow-accent: 0 0 10px rgba(255, 0, 229, 0.7), 0 0 20px rgba(255, 0, 229, 0.5);
-    --card-width: 300px;
-    --card-height: 420px;
-    --carousel-radius: 400px;
-    --transition-speed: 0.5s;
-}
-
-
-
-
-
-
-.logo-icono, .logo{  
-    width: 100px;
-    border-radius: 50%;
-    aspect-ratio: 1; /* Se ajusta al mismo valor que el width */
-    object-fit: cover;
-    animation: animate 3.5s linear infinite;
-}
-
-
-
-
-/*  picture styles */
-
-.sidebar-picture{
-    width:clamp(16.5dvb, 24.5dvb, 320px);
-    margin: auto;
-    opacity: 0.9;
-    filter: hue-rotate(-25deg);}
-
-
-/* sidebar profile menu style */
-
-.sidebar{
-    background-color: var(--sidebar-color);
-    height: 191dvh;
-    width: clamp(220px, 10dvw, 300px);
-    font-size: clamp(1rem, 2.2vw, 3rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position:relative;
-    top: 10px;
-    padding: 30px 0 30px 6px;
-    box-shadow: 4px 5px 0px rgb(91, 66, 230);
-    border-radius: 20px;
-    z-index: 1; /* Agregado para asegurar que la sidebar esté encima de #menu_compra */
-}
-
-.sidebar-nav{
-
-    flex: 1;
-    display: flex;
-}
-
-.sidebar-nav ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: baseline;
-    width: 100%;
-}
-
-.sidebar-nav a {
-    color: inherit;
-    text-decoration: none;
-    font-size: .9rem;
-    padding-right: 6px;
-
-}
-.sidebar-nav span{
-    padding: 12px;
-    font-size: 1.38rem;
-
-}
-.sidebar-item{
-
-    list-style: none;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    color: var(--dark-color );
-    border-radius: 36px 0 0 36px;
-    position: relative;
-}
-
-.sidebar-item:hover {
-    background-color: var(--dark-color);
-    color: var(--sidebar-color);
-}
-
-
-
-
-.sidebar-item::before,
-.sidebar-item::after{
-    content: "";
-    background-color: var(--bg-color);
-    opacity: 1;
-    position: absolute;
-    right: 0;
-    width: 18px;
-    height: 18px;
-    background-color: transparent;
-    
-}
-.sidebar-item:hover::before{
-    top: -18px;
-    border-bottom-right-radius:25px ;
-    box-shadow: 4px 4px 0 4px var(--bg-color);
-
-}
-.sidebar-item:hover::after{
-
-    bottom: -18px;
-    border-top-right-radius:25px ;
-    box-shadow: 4px -4px 0 4px var(--bg-color);
-
-}
-
-input[type="checkbox"]{
-    display: none;
-}
-.sidebar-form{
-
-    position: absolute;
-    z-index: 20;
-    right: -1rem;
-
-}
-.sidebar-form  .open-button{
-    display: none;
-}
-.sidebar label{
-    position:relative ;
-    background-image: var(--sidebar-color) ;
-    
-    color: var(--card-bg);
-    font-size: 2rem;
-    border-radius: 50%;
-
-    left: -15px;
-    padding: .4rem;
-}
-
-input[type="checkbox"]:checked~ label{
-    color: var(--bg-color);
-    background-color:var(--sidebar-color) ;
-    border-radius: 50%;
-    clip-path:none;
-    left: 3px;
-}
-
-input[type="checkbox"]:checked~ ::after,input[type="checkbox"]:checked~ ::before {
-    display: flex; 
-    
-}
-
-.sidebar:has(input[type="checkbox"]:checked) .sidebar-form  label{
-    display: none;
-    
-}
-
-.sidebar:has(input[type="checkbox"]:checked) .sidebar-form .open-button{
-    display: flex;
-    
-}
-
-
-.sidebar:has(input[type="checkbox"]:checked){
-    width:70px;
-}
-.sidebar:has(input[type="checkbox"]:checked)~ #menu_compra{
-    position: relative;
-    right: 50px;
-}
-
-.sidebar:has(input[type="checkbox"]:checked).sidebar-form{
-    width:fit-content;
-    top: 4.8rem;
-}
-.sidebar:has(input[type="checkbox"]:checked) picture img {
-    max-width: 2.1rem;
-
-}
-
-.sidebar:has(input[type="checkbox"]:checked) picture {
-    max-width: 0;
-    
-    }
-.sidebar:has(input[type="checkbox"]:checked) picture {
-    width: fit-content;
-    margin-left: 2px;
-
-}
-.sidebar:has(input[type="checkbox"]:checked) .box  {
-    width: 100.8dvw;
-
-
-}
-.sidebar:has(input[type="checkbox"]:checked) .card-ubicacion  {
-    width: 102.5dvw;
-   
-    
-
-}
-.sidebar:has(input[type="checkbox"]:checked) :is(.sidebar-item a,.sidebar-profile a, .sidebar-item2  span)  {
-    display: none;
-
-}
-
-
-
-/* menu de compra */
-
-#menu_compra{
-    display: grid;
-    border-radius: 20px;
-    border: 2px solid rgb(84, 78, 90);
-    position: absolute;
-    top: -9px;
-    left: 53px;
-    height: 95dvh;
-    width:81dvw;
-    margin-top: 1%;
-    padding-right: 2px;
-    flex-grow: 1;
-    box-shadow:  0px 2px 5px 1px rgb(187, 174, 199);
-    overflow: hidden;
-    z-index: -1;
-
-}
-
-
-/* menu accesorios */
-
-.grupo{ display: flex;gap: 29em;align-items: center;justify-content: center;padding-right: .01em;}
-
-
-
-.sidebar:has(input[type="checkbox"]:checked) .scroll-list__wrp{
-    margin-left: 78px;
-    width: 90.4dvw;
-}
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra{
-    width: 90dvw;
-    left: 80px;
-    height: 95dvh;
-}
-
-/* boton accesorios */
-.carrito-accesorios{
-    position: relative;top: -31dvh;margin-left: 55dvw;border-radius: 25%;box-shadow: 2px 2px 0px rgb(66, 75, 88);
-}
-.carrito-accesorios:active{ transform: translateY(-2px);
-}
-
-/* menu acordeon para accesorios */
-
-
-    .scroll-list__wrp {
-        overflow-x: auto;
-        position: absolute;
-        display: flex;
-
-        top: 95dvh;
-        margin-left: 60px;
-        width: 80.9dvw;
-        height: 48dvh;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="celular.png" type="image/png">  
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu_open" /> 
+    <title>Pagina celulares</title>
+</head>
+<body>
+
+<aside class="sidebar">
+    </div>
+    <form class="sidebar-form">
         
-        border-radius: 36px;
-        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
+        <input type="checkbox" id="open-menu" >
+        <div id="menu_compra">
+        <div class="cosmos-background">
+<div class="stars-container"></div>
+    </div>
+    <div class="container-fluid h-100 d-flex flex-column">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
+    <div class="carousel-container">
+    <div class="carousel" id="memory-carousel" style="transform: rotateY(0deg);">
+        <div class="memory-card" data-memory-id="1" data-index="0" style="transform: rotateY(0deg) translateZ(250px);">
+        <div class="card-inner">
+            <div class="card-front">
+            <div class="card-content">
+                <div class="memory-date">Modelo</div>
+                <h3>Xioami MI 8</h3>
+                <div class="memory-image">
+                <img class="imagen1" src="imagen-muestra.png" alt="imagen de celular">
+                <i class="fa-solid fa-code fa-3x"></i>
+                <div class="glitch-effect"></div>
+                </div>
+                <div class="card-glow"></div>
+                                <p class="memory-preview">
+$
+                <button class="carrito-celularesmi8"> Agregar al carrtito</button></p><button class="caracteristicas-mi8"> Ver caracteristicas</button>
+                
+            </div>
+            </div>
+            <div class="card-back">
+            <div class="card-content">
+                <h3>Caracteristicas</h3>
+<li> DIMENSIONES-
 
+154,9 x 74,8 x 7,6 milímetros</li>
+<li>PESO-
+
+172 g</li>
+<li>DISEÑO-
+
+Cristal y metal
+Lector de huellas trasero
+Cristal Corning Gorila Glass 4</li>
+<li>PANTALLA - AMOLED 6 pulgadas
+Formato 18:7:9
+FullHD+ 2.248 x 1.080 píxeles88,5% ratio p/f</li>
+<li>PROCESADOR -	
+Snapdragon 845, 64 bits, 10 nm
+Octa-core Kryo 2,8 GHz
+GPU Adreno 630</li>
+<li>RAM -6 GB LPDDR4x</li>
+<li>CAPACIDAD - 	
+64/128/256 GB</li>
+<li>SOFTWARE- 	
+Android 8.0 Oreo + MIUI 9.5</li>
+
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="memory-card" data-memory-id="2" data-index="1" style="transform: rotateY(60deg) translateZ(250px);">
+        <div class="card-inner">
+            <div class="card-front">
+            <div class="card-content">
+                <div class="memory-date">Modelo</div>
+                <h3>Motorola G10</h3>
+                <div class="memory-image">
+                <img class="imagen1" src="imagen-muestra.png" alt="imagen de celular">
+                <i class="fa-solid fa-bug fa-3x"></i>
+                <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+$<button class="carrito-celulares"> Agregar al carrtito</button></p><button class="caracteristicas"> Ver caracteristicas</button>
+                </p>
+                <div class="card-glow"></div>
+            </div>
+            </div>
+            <div class="card-back">
+            <div class="card-content">
+                <h3>Caracteristicas</h3>
+<li> DIMENSIONES-
+
+154,9 x 74,8 x 7,6 milímetros</li>
+<li>PESO-
+
+172 g</li>
+<li>DISEÑO-
+
+Cristal y metal
+Lector de huellas trasero
+Cristal Corning Gorila Glass 4</li>
+<li>PANTALLA - AMOLED 6 pulgadas
+Formato 18:7:9
+FullHD+ 2.248 x 1.080 píxeles88,5% ratio p/f</li>
+<li>PROCESADOR -	
+Snapdragon 845, 64 bits, 10 nm
+Octa-core Kryo 2,8 GHz
+GPU Adreno 630</li>
+<li>RAM -6 GB LPDDR4x</li>
+<li>CAPACIDAD - 	
+64/128/256 GB</li>
+<li>SOFTWARE- 	
+Android 8.0 Oreo + MIUI 9.5</li>
+
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+
+        <div class="memory-card" data-memory-id="3" data-index="2" style="transform: rotateY(120deg) translateZ(250px);">
+        <div class="card-inner">
+            <div class="card-front">
+            <div class="card-content">
+                <div class="memory-date">Modelo</div>
+                <h3>Samsung a 54</h3>
+                <div class="memory-image">
+                    <img class="imagen1" src="imagen-muestra.png" alt="imagen de celular">
+                <i class="fa-solid fa-book-open fa-3x"></i>
+                <div class="glitch-effect"></div>
+                
+                </div>
+                <p class="memory-preview">
+$ <button class="carrito-celulares"> Agregar al carrtito</button></p><button class="caracteristicas">  Ver caracteristicas</button>
+                </p>
+                <div class="card-glow"></div>
+            </div>
+            </div>
+            
+            <div class="card-back">
+            <div class="card-content">
+                
+                            <div class="card-content">
+                <h3>Caracteristicas</h3>
+<li> DIMENSIONES-
+
+154,9 x 74,8 x 7,6 milímetros</li>
+<li>PESO-
+
+172 g</li>
+<li>DISEÑO-
+
+Cristal y metal
+Lector de huellas trasero
+Cristal Corning Gorila Glass 4</li>
+<li>PANTALLA - AMOLED 6 pulgadas
+Formato 18:7:9
+FullHD+ 2.248 x 1.080 píxeles88,5% ratio p/f</li>
+<li>PROCESADOR -	
+Snapdragon 845, 64 bits, 10 nm
+Octa-core Kryo 2,8 GHz
+GPU Adreno 630</li>
+<li>RAM -6 GB LPDDR4x</li>
+<li>CAPACIDAD - 	
+64/128/256 GB</li>
+<li>SOFTWARE- 	
+Android 8.0 Oreo + MIUI 9.5</li>
+
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="memory-card" data-memory-id="4" data-index="3" style="transform: rotateY(180deg) translateZ(250px);">
+        <div class="card-inner">
+            <div class="card-front">
+            <div class="card-content">
+                <div class="memory-date">Caracteristicas</div>
+                <h3>Poco 8A</h3>
+                <div class="memory-image">
+                    <img class="imagen1" src="imagen-muestra.png" alt="imagen de celular">
+                <i class="fa-solid fa-atom fa-3x"></i>
+                <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+$ <button class="carrito-celulares"> Agregar al carrtito</button></p><button class="caracteristicas">  Ver caracteristicas</button>
+                </p>
+                <div class="card-glow"></div>
+            </div>
+            </div>
+            <div class="card-back">
+            <div class="card-content">
+                <h3>Caracteristicas</h3>
+<li> DIMENSIONES-
+
+154,9 x 74,8 x 7,6 milímetros</li>
+<li>PESO-
+
+172 g</li>
+<li>DISEÑO-
+
+Cristal y metal
+Lector de huellas trasero
+Cristal Corning Gorila Glass 4</li>
+<li>PANTALLA - AMOLED 6 pulgadas
+Formato 18:7:9
+FullHD+ 2.248 x 1.080 píxeles88,5% ratio p/f</li>
+<li>PROCESADOR -	
+Snapdragon 845, 64 bits, 10 nm
+Octa-core Kryo 2,8 GHz
+GPU Adreno 630</li>
+<li>RAM -6 GB LPDDR4x</li>
+<li>CAPACIDAD - 	
+64/128/256 GB</li>
+<li>SOFTWARE- 	
+Android 8.0 Oreo + MIUI 9.5</li>
+
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="memory-card" data-memory-id="5" data-index="4" style="transform: rotateY(240deg) translateZ(250px);">
+        <div class="card-inner">
+            <div class="card-front">
+            <div class="card-content">
+                <div class="memory-date">Modelo</div>
+                <h3>Nokia N1000</h3>
+                <div class="memory-image">
+                    <img class="imagen1" src="imagen-muestra.png" alt="imagen de celular">
+                <i class="fa-solid fa-code-branch fa-3x"></i>
+                <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+$ <button class="carrito-celulares"> Agregar al carrtito</button></p><button class="caracteristicas">  Ver caracteristicas</button>
+                </p>
+                <div class="card-glow"></div>
+            </div>
+            </div>
+            <div class="card-back">
+            <div class="card-content">
+                <h3>Caracteristicas</h3>
+<li> DIMENSIONES-
+
+154,9 x 74,8 x 7,6 milímetros</li>
+<li>PESO-
+
+172 g</li>
+<li>DISEÑO-
+
+Cristal y metal
+Lector de huellas trasero
+Cristal Corning Gorila Glass 4</li>
+<li>PANTALLA - AMOLED 6 pulgadas
+Formato 18:7:9
+FullHD+ 2.248 x 1.080 píxeles88,5% ratio p/f</li>
+<li>PROCESADOR -	
+Snapdragon 845, 64 bits, 10 nm
+Octa-core Kryo 2,8 GHz
+GPU Adreno 630</li>
+<li>RAM -6 GB LPDDR4x</li>
+<li>CAPACIDAD - 	
+64/128/256 GB</li>
+<li>SOFTWARE- 	
+Android 8.0 Oreo + MIUI 9.5</li>
+
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="memory-card" data-memory-id="6" data-index="5" style="transform: rotateY(300deg) translateZ(250px);">
+        <div class="card-inner">
+            <div class="card-front">
+            <div class="card-content">
+                <div class="memory-date">Modelo</div>
+                <h3>Motorola ZTE</h3>
+                <div class="memory-image">
+                    <img class="imagen1" src="imagen-muestra.png" alt="imagen de celular">
+                <i class="fa-solid fa-rocket fa-3x"></i>
+                <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">
+$ <button class="carrito-celulares"> Agregar al carrtito</button></p><button class="caracteristicas">  Ver caracteristicas</button>
+                </p>
+                <div class="card-glow"></div>
+            </div>
+            </div>
+            <div class="card-back">
+            <div class="card-content">
+                <h3>Caracteristicas</h3>
+<li> DIMENSIONES-
+
+154,9 x 74,8 x 7,6 milímetros</li>
+<li>PESO-
+
+172 g</li>
+<li>DISEÑO-
+
+Cristal y metal
+Lector de huellas trasero
+Cristal Corning Gorila Glass 4</li>
+<li>PANTALLA - AMOLED 6 pulgadas
+Formato 18:7:9
+FullHD+ 2.248 x 1.080 píxeles88,5% ratio p/f</li>
+<li>PROCESADOR -	
+Snapdragon 845, 64 bits, 10 nm
+Octa-core Kryo 2,8 GHz
+GPU Adreno 630</li>
+<li>RAM -6 GB LPDDR4x</li>
+<li>CAPACIDAD - 	
+64/128/256 GB</li>
+<li>SOFTWARE- 	
+Android 8.0 Oreo + MIUI 9.5</li>
+
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="carousel-controls">
+    <button id="prev-btn" class="control-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button id="next-btn" class="control-btn">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    </div>
+</main>
+</div>
+        </div>
+
+<!-- menu accesorios -->
+
+
+    <div class="contenedor_accesorios">
         
-
-    }
-    .scroll-list__wrp::-webkit-scrollbar {
-    display: none;
-    }
-    .scroll-list__item {
-        position: relative;
-        gap: 129em;
-        top: -10px;
-        height: 78dvh;
-        margin-left: 10px;
-        opacity: 0;
-        border-radius: 12px;
-    
-        opacity: 0.2;
-        border: 2px solid transparent;
-        animation: movimiento 14s linear infinite ;
-
+<div  class="scroll-list__wrp" id="scrollList">
+    <div class="grupo">
+    <div class="scroll-list__item">
         
- 
+        <article>
+        <img src="1.jpeg"> 
+        <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul>
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="2.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul>
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="1.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul>
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="4.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul>
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="2.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul> 
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="2.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul> 
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="4.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul> 
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="2.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul>
+        <button class="carrito-accesorios"> Agregar al carrtito</button> 
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="1.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul>
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+    <div class="scroll-list__item"> <article>
+        <img src="3.jpeg"> <ul><li>ALCANCE</li>
+        <li>BATERIA</li>
+        <li>DISEÑO</li>
+        <li>MATERIALES</li>
+        </ul> 
+        <button class="carrito-accesorios"> Agregar al carrtito</button>
+        </article>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    const scrollContainer = document.getElementById("scrollList");
+    const items = scrollContainer.querySelectorAll(".scroll-list__item");
+
+    function updateEffects() {
+    const containerRect = scrollContainer.getBoundingClientRect();
+    const containerCenter = containerRect.top + containerRect.height / 2;
+    items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.top + itemRect.height / 2;
+        const distance = Math.abs(containerCenter - itemCenter);
+        const ratio = Math.max(0, 1 - distance / (containerRect.height / 2));
+        item.style.transform = `scale(${0.5 + ratio * 0.7})`;
+        item.style.opacity = 0.2 + ratio * 0.8;
+        ratio > 0.95 ? item.classList.add("active") : item.classList.remove("active");
+    });
     }
-    .scroll-list__wrp:hover{ animation-play-state: paused}
-    .scroll-list__item:hover{
-    animation-play-state: paused;
-}
+
+    scrollContainer.addEventListener("scroll", updateEffects);
+    window.addEventListener("load", updateEffects);
+</script>
+</div>
 
 
-/* animacion para accesorios */
 
-@keyframes movimiento {
-    to{ transform: translate(-200dvw);}
+<!-- animacion menu ofertas -->
+
+                                    <script>
+                                        
+        document.addEventListener("DOMContentLoaded", function () {
+        // Elements
+        const carousel = document.getElementById("memory-carousel");
+        const cards = document.querySelectorAll(".memory-card");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+
+        // Variables
+        let currentIndex = 0;
+        let startX, startY;
+        let isDragging = false;
+        let theta = 0;
+        let radius = window.innerWidth <= 768 ? 250 : 400;
+        const totalCards = cards.length;
+
+        // Initialize
+        function init() {
+          // Position cards in a circle
+        arrangeCards();
+
+          // Add event listeners
+        prevBtn.addEventListener("click", prevCard);
+        nextBtn.addEventListener("click", nextCard);
+        cards.forEach((card) => {
+            card.addEventListener("click", flipCard);
+        });
+
+          // Touch/mouse events for dragging
+        carousel.addEventListener("mousedown", dragStart);
+        carousel.addEventListener("touchstart", dragStart, { passive: true });
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("touchmove", drag, { passive: false });
+        document.addEventListener("mouseup", dragEnd);
+        document.addEventListener("touchend", dragEnd);
+
+          // Keyboard navigation
+        document.addEventListener("keydown", handleKeyDown);
+
+          // Start ambient sound
+        playAmbientSound();
+        }
+
+        // Arrange cards in a circle
+        function arrangeCards() {
+        const angle = 360 / totalCards;
+        cards.forEach((card, index) => {
+            // Calculate the angle for this card
+            const cardAngle = angle * index;
+            // Convert to radians
+            const rad = (cardAngle * Math.PI) / 180;
+            // Calculate position
+            const x = radius * Math.sin(rad);
+            const z = radius * Math.cos(rad) * -1;
+
+            // Apply transform
+            card.style.transform = `rotateY(${cardAngle}deg) translateZ(${radius}px)`;
+
+            // Store the card's index
+            card.dataset.index = index;
+        });
+        }
+
+        // Rotate carousel
+        function rotateCarousel() {
+        carousel.style.transform = `rotateY(${theta}deg)`;
+
+          // Update current card index
+        currentIndex = Math.round(
+            Math.abs(theta / (360 / totalCards)) % totalCards
+        );
+        if (currentIndex >= totalCards) currentIndex = 0;
+        }
+
+        // Next card
+        function nextCard() {
+          theta -= 360 / totalCards; // Changed direction to match swipe
+        rotateCarousel();
+        }
+
+        // Previous card
+        function prevCard() {
+          theta += 360 / totalCards; // Changed direction to match swipe
+        rotateCarousel();
+        }
+
+        // Flip card
+        function flipCard(e) {
+        const card = e.currentTarget;
+        const cardIndex = parseInt(card.dataset.index);
+
+          // Only flip the current front-facing card
+        if (cardIndex === currentIndex) {
+            card.classList.toggle("flipped");
+        }
+        }
+
+        // Drag functions
+        function dragStart(e) {
+          e.preventDefault(); // Prevent default behavior
+        isDragging = true;
+        startX = e.pageX || e.touches[0].pageX;
+        }
+
+        function drag(e) {
+        if (!isDragging) return;
+          e.preventDefault(); // Prevent default scrolling
+
+        const currentX = e.pageX || (e.touches ? e.touches[0].pageX : startX);
+        const diffX = currentX - startX;
+
+          // Rotate based on drag distance - FIXED DIRECTION
+        const sensitivity = 0.5;
+          const newTheta = theta + diffX * sensitivity;
+
+        carousel.style.transform = `rotateY(${newTheta}deg)`;
+        }
+
+        function dragEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const currentX =
+            e.pageX || (e.changedTouches ? e.changedTouches[0].pageX : startX);
+        const diffX = currentX - startX;
+
+          // FIXED DIRECTION: If swiping right, show previous card (theta increases)
+          // If swiping left, show next card (theta decreases)
+        if (Math.abs(diffX) > 20) {
+            if (diffX > 0) {
+              prevCard(); // Swipe right to see previous card
+            } else {
+              nextCard(); // Swipe left to see next card
+            }
+        } else {
+            // Snap to the closest card
+            const anglePerCard = 360 / totalCards;
+            const snapAngle = Math.round(theta / anglePerCard) * anglePerCard;
+            theta = snapAngle;
+            rotateCarousel();
+        }
+        }
+
+        // Keyboard navigation
+        function handleKeyDown(e) {
+        if (e.key === "ArrowLeft") {
+            nextCard(); // Changed to match swipe direction
+        } else if (e.key === "ArrowRight") {
+            prevCard(); // Changed to match swipe direction
+        } else if (e.key === "Enter" || e.key === " ") {
+            const currentCard = document.querySelector(
+            `.memory-card[data-index="${currentIndex}"]`
+            );
+            if (currentCard) {
+            currentCard.classList.toggle("flipped");
+            }
+        }
+        }
+
+        // Play ambient sound
+        function playAmbientSound() {
+          // Optional: Add ambient sound if needed
+        }
+
+        // Resize handler
+        window.addEventListener("resize", () => {
+        radius = window.innerWidth <= 768 ? 250 : 400;
+        arrangeCards();
+        rotateCarousel();
+        });
+
+        // Initialize the carousel
+        init();
+    });
     
-}
+                                    </script>
 
-article {
+
+                                </div> </div>
+                        </div>
+
+
+
+
+        </div>
+
+        <label class="material-symbols-outlined open-button" for="open-menu" >double_arrow</label>
+        
+        <label class="material-symbols-outlined" for="open-menu">Arrow_Circle_left</label>
+        
+    </form>
+    
+        <picture class="sidebar-picture">
+            <source class="logo-icono" srcset="file.png" media="(max-width:57.5rem)">
+            <img class="logo" src="file.png" alt="logo">
+        </picture>
+
+        <nav class="sidebar-nav">
+
+            <ul>
+                <li class="sidebar-item ">
+                    <span class="material-symbols-outlined" >Notifications</span>
+                    <a href="#scrollList" class="local-link">ACCESORIOS</a>
+                </li>
+                <li class="sidebar-item">
+                    <span class="material-symbols-outlined" >mark_email_unread</span>
+                    <a href="#menu_compra">TELEFONOS DESTACADOS</a>
+                </li>
+                <li class="sidebar-item">
+                    <span  class="material-symbols-outlined" >shopping_cart</span>
+                    <a href="#">Compras</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#box-ubicacion" class="local-link">
+                        <span class="material-symbols-outlined" class="ubicacion">Local</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+
+                </div>
+
+</div>
+</div>
+      </aside>  
+    <!-- ubicacion -->
+        <div class="box" id="box-ubicacion">
+            <img class="foto-local" src="local de muestra.jpg" alt="Imagen del local"> 
+    <div class="elements-ubicacion">
+    <h2>Retira tu pedido en nuestra sucursal de Carlos Paz o consulta por envios en Còrdoba con cargo  </h2>
+<a href="https://maps.app.goo.gl/u2Crwfp83h1UFnqW8" href="#local"  target="_blank"><button class="button" >Como llegar</button></a>
+
+    </div> 
+    <div class="card-ubicacion"> 
+    </div> 
+    </div> 
 
 
     
-    padding-left: 15px;
-    position: absolute;
-    left: 30px;
 
-    width: 290px;
-    height: 100%;
-    transition: all 0.3s ease;
-  
-}
 
-article img:first-child {
-    position: relative;
-    padding: 12px;
-    top: 80px;
-    margin: 45px;
-    margin-top: 50px;
-    width: 60%;
-    height: 45%;
-    opacity: .9;
-    object-fit: contain;
-    box-shadow: 0 60px 60px -60x rgba(0, 30, 255, 0.5);
-    border-radius: 20px;
-    object-fit: cover;
-    width: 100%;
-}
-
-
-img{transition: 1.2s linear;}
-
-img:hover {
-    filter: drop-shadow(5px 105px 50px #646);
-    transform: perspective(950px) rotateX(15deg) translateY(-5%) translateZ(0);
-}
-
-
-
-
-
-article li {
-    position: relative;
-    color: #010114;
-    top: -11dvw;
-    font-size: large;
-    left: 60dvw;
-    scale: 2;
-    margin: 15px;
-    width: 650px;
-    height: 50%;
-    object-fit: cover;
-
-    transition: 1.5s ease;
-    opacity:1;
-}
-
-article:hover p {
-    opacity: 1;
-
-}
-
-
-/* animacion menu compra  */
-#menu_compra::before {
-content: " ";
-position: inherit;
-width: 180dvw;
-height: 60dvh;
-background: linear-gradient(180deg ,#ff00c8, cyan);
-animation: animate 3.5s linear infinite; 
-transition: all .3s linear;
-z-index: -2;}
-
-
-
-
-#menu_compra::after {
-    content: " ";
-    position:inherit;
-    inset: 5px;
-    background: #130322;
-
-    border-radius: 20px;
-    z-index: -2;
-
-}
-
-
-
-
-
-@keyframes animate {
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
-
-/* tarjetas del menu compra */
-.title { font-size: 2.5rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 15px rgba(157, 0, 255, 0.5); animation: pulse 3s infinite alternate; } 
-
- /*Cosmic Background  */
-.cosmos-background { 
-    width: 100%; 
-    height: 300%; 
-    background: radial-gradient( ellipse at bottom, #010114 0%, #0c0c0c 100% ); 
-    overflow: hidden; 
-} 
-.stars-container { 
-
-    position: absolute; 
-    width: 100dvw; 
-    height: 100dvh; 
-    background-image: radial-gradient( 1px 1px at 25% 25%, white, rgba(0, 0, 0, 0) ), radial-gradient(1px 1px at 50% 50%, white, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 75% 75%, white, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 100% 100%, white, rgba(0, 0, 0, 0)); 
-    background-size: 200px 200px, 300px 300px, 400px 400px, 600px 600px; 
-    background-repeat: repeat; 
-    animation: twinkle 10s linear infinite; 
-} 
-@keyframes twinkle { 
-    0% { background-position: 0 0, 0 0, 0 0, 0 0; } 
-    100% { background-position: 200px 200px, 300px 300px, 400px 400px, 600px 600px; } 
-} 
-/* Carousel Container */
-.carousel-container { 
-    position: relative; 
-    width: 100%; 
-    height: 780px; 
-    perspective: 2000px; 
-    transform-style: preserve-3d; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    touch-action: none; 
-/* Prevent default touch actions */
-} 
-
-.carousel { 
-    position: relative; 
-    width: var(--carousel-radius); 
-    height: var(--carousel-radius); 
-    transform-style: preserve-3d; 
-    transition: transform 0.5s ease; } 
-
-/* Memory Cards */
-.memory-card { 
-    position: absolute; 
-    width: var(--card-width); 
-    height: var(--card-height); 
-    left: 50%; top: 50%; margin-left: calc(var(--card-width) / -2); 
-    margin-top: calc(var(--card-height) / -2); 
-    transform-style: preserve-3d; 
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    cursor: pointer; } 
-
-.card-inner { 
-    position: relative; 
-    width: 100%; 
-    height: 75dvh;
-    top: -69px;
-    
-    transform-style: preserve-3d; 
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); } 
-.memory-card:hover .card-inner { transform: translateZ(20px); } 
-.memory-card.flipped .card-inner { transform: rotateY(180deg); } 
-.card-front, .card-back { 
-    position: absolute; 
-    width: 100%; 
-    height: 90%; 
-    backface-visibility: hidden; 
-    border-radius: 15px; 
-    overflow: hidden; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); } 
-
-.card-front { 
-    background: linear-gradient( 135deg, rgba(30, 30, 60, 0.8), rgba(20, 20, 40, 0.9) ); 
-    border: 1px solid rgba(157, 0, 255, 0.3); 
-    transform-style: preserve-3d; } 
-.card-back { 
-    background: linear-gradient( 135deg, rgba(20, 20, 40, 0.9), rgba(30, 30, 60, 0.8) ); border: 1px solid rgba(0, 229, 255, 0.3); transform: rotateY(180deg); } .card-content { padding: 12px; height: 100%; display: flex; flex-direction: column; position: relative; }
-
-.memory-date { font-family: "Orbitron", sans-serif; font-size: 0.8rem; color: var(--accent); margin-bottom: 10px; text-shadow: 0 0 5px rgba(255, 0, 229, 0.7); } 
-
-.memory-card h3 { font-size: 2.1rem; margin-bottom: 15px; color: var(--text-primary); letter-spacing: 1.5px;} 
-
-li{ font-size: .7rem; margin-bottom: 15px; color: var(--text-primary); text-shadow: 0 0 7px rgba(255, 255, 255, 0.5); } 
-
-.memory-image { width: 100%; height: 296px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; border-radius: 8px; background: rgba(0, 0, 0, 0.3); } 
-
-.memory-image i { color: var(--primary); font-size: 4rem; text-shadow: var(--glow-primary); animation: pulse 3s infinite alternate; z-index: 2; } 
-.glitch-effect { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient( 45deg, transparent 65%, rgba(157, 0, 255, 0.3) 70%, transparent 75% ); background-size: 200% 200%; animation: glitch 3s linear infinite; z-index: 1; } 
-
-@keyframes glitch { 0% { background-position: 0 0; } 25% { background-position: 100% 0; } 50% { background-position: 100% 100%; } 75% { background-position: 0 100%; } 100% { background-position: 0 0; } } 
-
-.memory-preview { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 15px; flex-grow: 1; } 
-.card-back .card-content p { font-size: 08rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5; flex-grow: 1; } 
-.memory-coordinates { font-family: "Orbitron", sans-serif; font-size: 0.8rem; color: var(--secondary); display: flex; flex-direction: column; gap: 5px; } 
-.time-stamp { color: var(--accent); } 
-.card-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px; pointer-events: none; background: radial-gradient( circle at 50% 50%, rgba(157, 0, 255, 0.1), transparent 70% ); opacity: 0; transition: opacity 0.3s ease; } 
-.memory-card:hover .card-glow { opacity: 1; } 
-/* botones en tarjeta celulares */
-.carrito-celulares{
-    margin-left: 100px;
-    border-radius: 20px;
-    border: 2px solid #48e;
-    color: #fff;
-    background-color: #41333c;
-    transition: 2s;
-}
-.carrito-celularesmi8{ position: relative;top: -18px; margin-left: 100px;border-radius: 20px;border: 2px solid #48e;color: #fff;background-color: #41333c;transition: 2s;}
-.carrito-celulares:hover{scale: 1.1;}
-.carrito-celularesmi8:hover{scale: 1.1;}
-
-.caracteristicas {
-    position: relative;
-    top: 0px;
-    height: 45px;
-    width: 110px;
-    margin-left: 120px;     
-    box-shadow:  2px 4px 3px #0a0a0a;
-    border-radius: 5px;
-    background-color: #150824;
-    color: #fff;
-    
-
-}
-.caracteristicas-mi8{ 
-    height: 45px;
-    position: relative;
-    top: -20px;    
-    width: 110px;
-    margin-left: 120px; 
-    box-shadow:  2px 4px 3px #2e2b2d;
-    border-radius: 5px;
-    background-color: #150824;
-    color: #fff;
-}
-
-.caracteristicas:hover, .caracteristicas-mi8:hover{
-  transform: translateY(-2px);
-}
-.caracteristicas-mi8:active,.caracteristicas:active{
-  display: none;}
-
-
-/* celulares en menu */
-.imagen1{ 
-    scale: .29;
-    border-radius: 40px;
-}
-
-
-/* Carousel Controls */
-
-.carousel-controls { position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 20px; z-index: 8; } 
-.control-btn { background: rgba(20, 20, 40, 0.7); border: 1px solid var(--primary); color: var(--text-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; box-shadow: var(--glow-primary); } 
-.control-btn:hover { background: rgba(30, 30, 60, 0.9); transform: scale(1.1); } 
-
-
-
-/* Animations */
-
-@keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } } 
-
-
-
-
-
-
-/* ubicacion */
-
-.box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 102dvw;
-    height: 45dvw;
-    background: radial-gradient(#480d35, #17151d);
-    position: absolute;
-    top: 151dvh;
-    /* left:-17dvw; */
-    border-radius: 20px;
-    z-index: 1;
-}
-.card-ubicacion {
-    display: flex;
-    position: relative;
-    top: -0dvh;
-    /* left:-0dvw; */
-    background: rgba(57, 56, 58, 0.788);
-    width: 102dvw;
-    height: 41dvw;
-    opacity:1;
-    border: 0.5px solid rgba(255, 255, 255, 0.15);
-    border-radius: 25px;
-    box-shadow: 0 25px 45px rgba(0,0,0,0.05);
-    transition: all 1.5s linear;
-}
-.card-ubicacion:hover{
-    opacity:0 ;
-}
-
-.foto-local {
-    height: 47dvh;
-    display: flex;
-    width: 102dvw;
-    height: 38dvw;
-    margin-left: 0dvh;
-    position: absolute;
-    top: 25px;
-    border-radius: 20px;
-}
-.elements-ubicacion{
-    top: 200dvh;
-    left: 50px;
-    width: 200px;
-    height: auto;
-    background: transparent;
-    position: absolute;
-
-}
-.elements-ubicacion h2{
-    position: relative;
-    display: inline-flex;
-    text-wrap: wrap;
-    top: -190dvh;
-    font-size: 1.8rem;
-    font-weight: 5;
-    color: rgba(12, 6, 22, 0.92);
-    text-shadow: 2px 4px 0px #444;
-    text-transform: uppercase;
-    animation: h2 5s linear alternate infinite;
-    left: -14px;
-    overflow-x:hidden ;
-}
-
-.button{
-    font-size: 2rem;
-    letter-spacing: 1mm;
-    border-radius: 20px;
-    display: inline;
-    position:absolute ;
-    color: #201f21;
-    text-wrap: nowrap;
-    top: -170dvh;
-    left: 30dvw;
-
-    box-shadow: 2px 0px 5px #91909c;
-}
-
-
-
-@keyframes h2 {
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
-}
-
-/* footer */
-
-
-
-/* diseño responsive */
 
-@media only screen and (min-width: 320px) and (max-width: 736px) and (orientation: portrait) 
-  /* Estilos específicos para pantalla vertical */
 
-{
-#menu_compra{
-    height: 130dvh;width: 710px;}
 
-#menu_compra::after{  height: 130dvh; width: 710px;}
 
-#menu_compra::before{  height: 130dvh; width: 710px;}
 
-.cosmos-background{
-    margin: 1%;margin-bottom:13%;border-radius: 20px;}
+</body>
 
-.cosmos-background{
-    margin: 1%;margin-bottom:13%;border-radius: 20px;
-}
+</html>
 
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra{height: 100dvh;width: 1190px;}
 
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra::after{height: 100dvh;width: 1190px;}
 
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra::before{height: 100dvh;width: 1190px;}
-.carrito-celularesmi8{position: relative; top:-17px;}
-.caracteristicas-mi8{ height: 45px;position: relative;top: -20px;    width: 110px;margin-left: 120px; box-shadow:  2px 4px 3px #2e2b2d;border-radius: 5px;background-color: #150824;color: #fff;}
 
 
-.sidebar:has(input[type="checkbox"]:checked).scroll-list__wrp{top: -75dvh;}
 
-:root {--card-width: 250px; --card-height: 380px;--carousel-radius: 200px;justify-content:center ;}
 
-.carousel-container {height: 100px; justify-content:center;/* Altura reducida */}
 
-.memory-card{margin-top: -35dvh}
 
-.memory-image{height: 296px;}
 
-.imagen1{ scale: .29;border-radius: 40px;}
 
-.card-inner { justify-content: flex-start;} 
 
-.card-ubicacion{ top: -1dvh;display: block;left: 5px; height: 550px;width:970px;position: relative;}
 
 
-.foto-local{ top: 5dvh;display: flex;height: 450px;width: 970px;}
 
-.box{ top: 18dvh;display: block;height: 550px;width:250px;}
 
-.sidebar:has(input[type="checkbox"]:checked) .box { top: 155dvh;width: 350dvw;height: 85dvh;left: 5.7dvw; }
 
-.button{left: 100dvw;}    
 
-.sidebar:has(input[type="checkbox"]:checked) .foto-local{ height:85dvh;margin-top: 2%; width: 350dvw;}
 
-.sidebar:has(input[type="checkbox"]:checked) .card-ubicacion{height: 85dvh; width: 350dvw;}
 
-.sidebar:has(input[type="checkbox"]:checked) .scroll-list__wrp  {top:100dvh;width: 320dvw;}
 
 
-.scroll-list__wrp{ width: 172dvw;top:130dvh;}
 
 
 
-.box{ top: 185dvh;width: 980px;}
 
 
-
-.elements-ubicacion h2{text-wrap: wrap;letter-spacing: 2mm;}
-
-
-article li {top: -51dvw;left: 190dvw;}
-
-
-
-}
-@media only screen and (min-width: 320px) and (max-width: 760px) and (orientation: landscape) {
-  /* Estilos específicos para pantalla horizontal */
-
-
-#menu_compra{ height: 220dvh;width: 980px;}
-
-#menu_compra::after{  height: 220dvh; width: 980px;}
-
-#menu_compra::before{  height: 220dvh; width: 980px;}
-
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra{height: 145dvh;width: 1050px;}
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra::after{height: 145dvh;width: 1190px;}
-.sidebar:has(input[type="checkbox"]:checked) #menu_compra::before{height: 145dvh;width: 1190px;}
-
-.sidebar:has(input[type="checkbox"]:checked) .card-inner{height:100%;}
-
-.card-content{ height: 100%;}
-.card-inner{ height:110%; top: -130px}
-
-.caracteristicas-mi8{ height: 45px;position: relative;top: -20px;    width: 110px;margin-left: 120px; box-shadow:  2px 4px 3px #2e2b2d;border-radius: 5px;background-color: #150824;color: #fff;}
-.carrito-celularesmi8{position: relative;top: -17px;
-    margin-left: 100px;}
-
-
-.scroll-list__wrp{ height:60dvh; width: 132dvw;top:225dvh;} 
-article li {top: -22dvw;left: 110dvw;}
-.sidebar:has(input[type="checkbox"]:checked) .scroll-list__wrp  { top:160dvh;width: 143dvw; height:100dvh;} 
-.sidebar:has(input[type="checkbox"]:checked) article li {left:110dvw ;top: -41dvh;}
-    
-.card-ubicacion{ top: -1px;display: flex;left: -0px; height: 550px;width:165dvw;position: absolute;}
-
-.sidebar{height:280dvh}
-
-.foto-local{ position: relative; top: 30px;height: 450px;width: 3500dvw;}
-
-.box{position:relative; top:590px; height: 550px;width:165dvw;}
-
-.sidebar:has(input[type="checkbox"]:checked) .box { position:relative;top:550px;width: 160dvw;height: 150dvh;left: 1.7dvw; }
-
-.button{left: 60dvw;}    
-
-.sidebar:has(input[type="checkbox"]:checked) .foto-local{ position:relative;height:155dvh;margin-top: 1%; width: 193dvw;}
-
-.sidebar:has(input[type="checkbox"]:checked) .card-ubicacion{position:absolute;height: 155dvh; width: 160dvw;top:0px;}
-
-
-}
 
 
 
